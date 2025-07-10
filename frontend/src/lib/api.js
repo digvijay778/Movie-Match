@@ -63,3 +63,21 @@ export async function getStreamToken() {
   const response = await axiosInstance.get("/chat/token");
   return response.data;
 }
+export const getUserProfile = async (userId) => {
+  const response = await axiosInstance.get(`/users/profile/${userId}`);
+  return response.data;
+};
+export const createReview = async (reviewData) => {
+  const response = await axiosInstance.post("/reviews", reviewData);
+  return response.data;
+};
+
+export const getAllReviews = async () => {
+  const response = await axiosInstance.get("/reviews");
+  return response.data;
+};
+
+export const getReviewsByUser = async (userId) => {
+  const response = await axiosInstance.get(`/reviews/user/${userId}`);
+  return response.data;
+};

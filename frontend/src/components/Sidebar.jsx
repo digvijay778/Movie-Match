@@ -1,6 +1,6 @@
-import { Link, useLocation } from "react-router";
+import { Link, useLocation } from "react-router-dom"; // Corrected import to react-router-dom
 import useAuthUser from "../hooks/useAuthUser";
-import { BellIcon, HomeIcon, UsersIcon, Film } from "lucide-react";
+import { BellIcon, HomeIcon, UsersIcon, Film, MessageSquareQuote } from "lucide-react"; // Added MessageSquareQuote icon
 
 const Sidebar = () => {
   const { authUser } = useAuthUser();
@@ -40,6 +40,19 @@ const Sidebar = () => {
           <UsersIcon className="size-5 text-base-content opacity-70" />
           <span>Friends</span>
         </Link>
+        
+        {/* ======================================= */}
+        {/* =============== NEW LINK ============== */}
+        {/* ======================================= */}
+        <Link
+          to="/reviews"
+          className={`btn btn-ghost justify-start w-full gap-3 px-3 normal-case ${
+            currentPath === "/reviews" ? "btn-active" : ""
+          }`}
+        >
+          <MessageSquareQuote className="size-5 text-base-content opacity-70" />
+          <span>Movie Reviews</span>
+        </Link>
 
         <Link
           to="/notifications"
@@ -52,22 +65,24 @@ const Sidebar = () => {
         </Link>
       </nav>
 
-      {/* USER PROFILE SECTION */}
+      {/* ============================================= */}
+      {/* =============== UPDATED PROFILE SECTION =============== */}
+      {/* ============================================= */}
       <div className="p-4 border-t border-base-300 mt-auto">
-        <div className="flex items-center gap-3">
+        <Link to={`/profile/${authUser?._id}`} className="flex items-center gap-3 group transition-opacity duration-300 hover:opacity-80">
           <div className="avatar">
-            <div className="w-10 rounded-full">
+            <div className="w-10 rounded-full ring-primary group-hover:ring-2">
               <img src={authUser?.profilePic} alt="User Avatar" />
             </div>
           </div>
           <div className="flex-1">
-            <p className="font-semibold text-sm">{authUser?.fullName}</p>
+            <p className="font-semibold text-sm group-hover:underline">{authUser?.fullName}</p>
             <p className="text-xs text-success flex items-center gap-1">
               <span className="size-2 rounded-full bg-success inline-block" />
               Online
             </p>
           </div>
-        </div>
+        </Link>
       </div>
     </aside>
   );

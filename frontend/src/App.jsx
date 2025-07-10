@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router-dom"; // Changed to react-router-dom
 import FriendsPage from "./pages/FriendsPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
@@ -7,6 +7,8 @@ import NotificationsPage from "./pages/NotificationsPage.jsx";
 import CallPage from "./pages/CallPage.jsx";
 import ChatPage from "./pages/ChatPage.jsx";
 import OnboardingPage from "./pages/OnboardingPage.jsx";
+import ProfilePage from "./pages/ProfilePage"; // Keep this import
+import ReviewsFeedPage from "./pages/ReviewsFeedPage"; // Keep this import
 
 import { Toaster } from "react-hot-toast";
 
@@ -27,6 +29,7 @@ const App = () => {
   return (
     <div className="h-screen" data-theme={theme}>
       <Routes>
+        {/* Existing Routes */}
         <Route
           path="/"
           element={
@@ -105,7 +108,6 @@ const App = () => {
             )
           }
         />
-
         <Route
           path="/onboarding"
           element={
@@ -120,6 +122,37 @@ const App = () => {
             )
           }
         />
+
+        {/* ======================================================= */}
+        {/* =============== ADDED NEW ROUTES HERE =============== */}
+        {/* ======================================================= */}
+        
+        <Route
+          path="/profile/:userId"
+          element={
+            isAuthenticated && isOnboarded ? (
+              <Layout showSidebar={true}>
+                <ProfilePage />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
+        />
+        
+        <Route
+          path="/reviews"
+          element={
+            isAuthenticated && isOnboarded ? (
+              <Layout showSidebar={true}>
+                <ReviewsFeedPage />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
+        />
+
       </Routes>
 
       <Toaster />

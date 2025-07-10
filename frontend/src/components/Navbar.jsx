@@ -1,6 +1,6 @@
-import { Link, useLocation } from "react-router";
+import { Link, useLocation } from "react-router-dom"; // Corrected import to react-router-dom
 import useAuthUser from "../hooks/useAuthUser";
-import { BellIcon, LogOutIcon, Film, Popcorn } from "lucide-react";
+import { BellIcon, LogOutIcon, Film } from "lucide-react"; // Removed unused Popcorn icon
 import ThemeSelector from "./ThemeSelector";
 import useLogout from "../hooks/useLogout";
 
@@ -36,12 +36,19 @@ const Navbar = () => {
           </div>
 
           <ThemeSelector />
-
-          <div className="avatar">
-            <div className="w-9 rounded-full">
-              <img src={authUser?.profilePic} alt="User Avatar" rel="noreferrer" />
+          
+          {/* ============================================= */}
+          {/* =============== UPDATED AVATAR LINK =============== */}
+          {/* ============================================= */}
+          <Link 
+            to={`/profile/${authUser?._id}`} 
+            className="avatar ml-2 group"
+            aria-label="View Profile"
+          >
+            <div className="w-9 rounded-full ring-primary ring-offset-base-200 ring-offset-2 transition-all group-hover:ring-4">
+              <img src={authUser?.profilePic} alt="User Avatar" />
             </div>
-          </div>
+          </Link>
 
           <button className="btn btn-ghost btn-circle" onClick={logoutMutation} aria-label="Logout">
             <LogOutIcon className="h-6 w-6 text-base-content opacity-70" />
