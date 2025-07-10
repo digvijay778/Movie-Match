@@ -1,6 +1,6 @@
 # 🎬 Movie Match App
 
-**Movie Match** is a full-stack social web application that allows users to **make friends**, **chat**, **video call**, and **connect through favorite movie genres**. Built with the **MERN stack**, **Tailwind CSS**, and **Stream SDK**, it provides a real-time, interactive experience for movie lovers to discover and interact with like-minded people.
+**Movie Match** is a full-stack social web application that allows users to **make friends**, **chat**, **video call**, **share movie reviews** and **connect through favorite movie genres**. Built with the **MERN stack**, **Tailwind CSS**, and **Stream SDK**, it provides a real-time, interactive experience for movie lovers to discover and interact with like-minded people.
 
 ---
 
@@ -8,7 +8,13 @@
 
 - 👥 **User Registration & Login**  
   Secure authentication using JWT.
-
+  
+- 👤 **User Profiles**
+  View user profiles displaying their bio, favorite genres, and a full list of their movie reviews.
+  
+- ⭐ **Movie Review System**
+  Share your thoughts on movies, give them a rating out of 10, and browse a public feed of reviews from the    community.
+  
 - 🎭 **Set Favorite Movie Genres**  
   Choose your favorite genres to personalize your profile.
 
